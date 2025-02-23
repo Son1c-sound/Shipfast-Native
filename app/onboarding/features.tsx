@@ -24,21 +24,10 @@ const featuresList = [
     description: 'Customized Navbar and bottom tabs'
   },
   {
-    icon: 'book',
-    title: 'Customized Profile',
-    description: 'Person Profile with sign out and delete account implemented'
-  },
-  {
     icon: 'navigation',
     title: 'Modern Navigation',
     description: 'File-based routing with Expo Router for a great UX'
   },
-  {
-    icon: 'theme-light-dark',
-    title: 'Theming System',
-    description: 'Beautiful dark and light mode support out of the box'
-  },
-
 ] as const;
 
 export default function FeaturesScreen() {
@@ -58,7 +47,7 @@ export default function FeaturesScreen() {
         >
           <View style={styles.contentWrapper}>
             <View style={styles.header}>
-              <MaterialCommunityIcons name="check-decagram" size={48} color="#0A7EA4" />
+              <MaterialCommunityIcons name="check-decagram" size={48} color="#000" />
               <ThemedText type="title" style={styles.title}>
                 Ready to Use
               </ThemedText>
@@ -98,7 +87,7 @@ function Feature({ icon, title, description }: {
     <View style={styles.feature}>
       <View style={styles.featureHeader}>
         <View style={styles.iconContainer}>
-          <MaterialCommunityIcons name={icon} size={24} color="#0A7EA4" />
+          <MaterialCommunityIcons name={icon} size={24} color="#000" />
         </View>
         <View style={styles.featureText}>
           <ThemedText type="defaultSemiBold" style={styles.featureTitle}>
@@ -124,7 +113,6 @@ const styles = StyleSheet.create({
   scrollContent: {
     flexGrow: 1,
     paddingHorizontal: 24,
-    minHeight: '100%',
   },
   contentWrapper: {
     flex: 1,
@@ -147,7 +135,8 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   feature: {
-    backgroundColor: '#0A7EA410',
+    borderWidth: 1,
+    borderColor: '#E5E5E5',
     padding: 16,
     borderRadius: 12,
     width: '100%',
@@ -161,7 +150,8 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#0A7EA420',
+    borderWidth: 1,
+    borderColor: '#E5E5E5',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -178,13 +168,15 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   buttonContainer: {
-    paddingHorizontal: 24,
+    paddingHorizontal: 20,
     paddingVertical: 16,
+    borderTopWidth: 1,
+    borderTopColor: '#E5E5E5',
   },
   button: {
-    backgroundColor: '#0A7EA4',
-    padding: 16,
-    borderRadius: 33,
+    backgroundColor: '#000',
+    padding: 18,
+    borderRadius: 12,
     alignItems: 'center',
   },
   buttonText: {

@@ -30,7 +30,7 @@ const ProfileScreen = () => {
   const handleSignOut = async () => {
     try {
       await signOut();
-      router.push("/sign-in");
+      router.push("/onboarding");
     } catch (error) {
       console.error("Error signing out:", error);
     }
@@ -40,7 +40,7 @@ const ProfileScreen = () => {
     try {
       await user?.delete();
       console.log("account deleted, redirecting to home");
-      router.push("/sign-in");
+      router.push("/onboarding");
     } catch (error: any) {
       console.error("Error deleting account:", error);
     }

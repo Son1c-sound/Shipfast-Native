@@ -15,7 +15,7 @@ export default function FinalScreen() {
 
   const handleGetStarted = async () => {
     try {
-      await showPaywall(SUPERWALL_TRIGGERS.ONBOARDING);
+      // await showPaywall(SUPERWALL_TRIGGERS.ONBOARDING);
       setIsOnboarded(true);
     } catch (error) {
       console.error('Failed to show paywall:', error);
@@ -27,7 +27,7 @@ export default function FinalScreen() {
       <SafeAreaView style={styles.safeArea}>
         <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContent}>
           <View style={styles.header}>
-            <MaterialCommunityIcons name="rocket-launch" size={48} color="#0A7EA4" />
+            <MaterialCommunityIcons name="rocket-launch" size={48} color="#000" />
             <ThemedText type="title" style={styles.title}>
               Start Building Today
             </ThemedText>
@@ -43,11 +43,13 @@ export default function FinalScreen() {
           </View>
         </ScrollView>
 
-        <TouchableOpacity style={styles.button} onPress={handleGetStarted}>
-          <ThemedText type="defaultSemiBold" style={styles.buttonText}>
-            Get Started Now
-          </ThemedText>
-        </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button} onPress={handleGetStarted}>
+            <ThemedText type="defaultSemiBold" style={styles.buttonText}>
+              Get Started Now
+            </ThemedText>
+          </TouchableOpacity>
+        </View>
       </SafeAreaView>
     </ThemedView>
   );
@@ -57,7 +59,7 @@ function Benefit({ icon, text }: { icon: keyof typeof IconType.glyphMap; text: s
   return (
     <View style={styles.benefitContainer}>
       <View style={styles.iconContainer}>
-        <MaterialCommunityIcons name={icon} size={24} color="#0A7EA4" />
+        <MaterialCommunityIcons name={icon} size={24} color="#000" />
       </View>
       <ThemedText style={styles.benefitText}>{text}</ThemedText>
     </View>
@@ -101,7 +103,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 16,
-    backgroundColor: '#0A7EA410',
+    borderWidth: 1,
+    borderColor: '#E5E5E5',
     padding: 16,
     borderRadius: 12,
   },
@@ -109,23 +112,28 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#0A7EA420',
+    borderWidth: 1,
+    borderColor: '#E5E5E5',
     alignItems: 'center',
     justifyContent: 'center',
   },
   benefitText: {
     fontSize: 17,
   },
+  buttonContainer: {
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+    borderTopWidth: 1,
+    borderTopColor: '#E5E5E5',
+  },
   button: {
-    backgroundColor: '#0A7EA4',
-    padding: 16,
-    borderRadius: 33,
+    backgroundColor: '#000',
+    padding: 18,
+    borderRadius: 12,
     alignItems: 'center',
-    marginHorizontal: 24,
-    marginBottom: 16,
   },
   buttonText: {
     color: 'white',
     fontSize: 18,
   },
-}); 
+});

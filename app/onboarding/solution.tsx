@@ -22,41 +22,43 @@ export default function SolutionScreen() {
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ScrollView 
-          style={styles.scroll} 
+        <ScrollView
+          style={styles.scroll}
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
         >
-          <View style={styles.contentWrapper}>
-            <View style={styles.header}>
-              <MaterialCommunityIcons name="lightbulb-on" size={48} color="#0A7EA4" />
-              <ThemedText type="title" style={styles.title}>
-                Introducing a Better Way
-              </ThemedText>
-            </View>
+          {/* Top Icon and Title */}
+          <View style={styles.header}>
+            <MaterialCommunityIcons name="lightbulb-on" size={56} color="#000" />
+            <ThemedText type="title" style={styles.title}>
+              Introducing a Better Way
+            </ThemedText>
+          </View>
 
-            <View style={styles.mainFeature}>
-              <ThemedText type="defaultSemiBold" style={styles.mainTitle}>
-                Your App's Core Value
-              </ThemedText>
-              <ThemedText style={styles.mainDescription}>
-                One clear, powerful sentence that explains exactly how you solve the user's problem.
-              </ThemedText>
-            </View>
+          {/* Main Feature Card */}
+          <View style={styles.mainFeature}>
+            <ThemedText type="defaultSemiBold" style={styles.mainTitle}>
+              Your App's Core Value
+            </ThemedText>
+            <ThemedText style={styles.mainDescription}>
+              One clear, powerful sentence that explains exactly how you solve the user's problem.
+            </ThemedText>
+          </View>
 
-            <View style={styles.benefits}>
-              {benefitPoints.map((benefit, index) => (
-                <View key={index} style={styles.benefit}>
-                  <MaterialCommunityIcons name="check-circle" size={24} color="#0A7EA4" />
-                  <ThemedText style={styles.benefitText}>
-                    {benefit}
-                  </ThemedText>
-                </View>
-              ))}
-            </View>
+          {/* Benefits Section */}
+          <View style={styles.benefits}>
+            {benefitPoints.map((benefit, index) => (
+              <View key={index} style={styles.benefit}>
+                <MaterialCommunityIcons name="check-circle" size={24} color="#000" />
+                <ThemedText style={styles.benefitText}>
+                  {benefit}
+                </ThemedText>
+              </View>
+            ))}
           </View>
         </ScrollView>
 
+        {/* Bottom Button */}
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button} onPress={handleNext}>
             <ThemedText type="defaultSemiBold" style={styles.buttonText}>
@@ -81,70 +83,65 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
-    paddingHorizontal: 24,
-    minHeight: '100%',
-  },
-  contentWrapper: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 24,
-    gap: 24,
+    paddingHorizontal: 20,
   },
   header: {
     alignItems: 'center',
-    gap: 16,
+    paddingTop: 40,
+    paddingBottom: 32,
   },
   title: {
-    fontSize: 32,
+    fontSize: 33,
     textAlign: 'center',
+    marginTop: 20,
+    fontWeight: '700',
   },
   mainFeature: {
-    backgroundColor: '#0A7EA410',
+    borderWidth: 1,
+    borderColor: '#E5E5E5',
     padding: 24,
-    borderRadius: 20,
-    gap: 8,
-    width: '100%',
+    borderRadius: 16,
+    marginBottom: 32,
   },
   mainTitle: {
-    fontSize: 22,
-    textAlign: 'center',
+    fontSize: 24,
+    textAlign: 'left',
+    marginBottom: 12,
   },
   mainDescription: {
     fontSize: 16,
-    opacity: 0.7,
-    textAlign: 'center',
-    lineHeight: 22,
+    lineHeight: 24,
+    opacity: 0.8,
   },
   benefits: {
-    gap: 12,
-    width: '100%',
+    gap: 16,
   },
   benefit: {
     flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    backgroundColor: '#0A7EA408',
-    padding: 16,
-    borderRadius: 12,
+    alignItems: 'flex-start',
+    gap: 16,
+    paddingVertical: 8,
   },
   benefitText: {
     flex: 1,
     fontSize: 16,
-    lineHeight: 22,
+    lineHeight: 24,
   },
   buttonContainer: {
-    paddingHorizontal: 24,
+    paddingHorizontal: 20,
     paddingVertical: 16,
+    borderTopWidth: 1,
+    borderTopColor: '#E5E5E5',
   },
   button: {
-    backgroundColor: '#0A7EA4',
-    padding: 16,
-    borderRadius: 33,
+    backgroundColor: '#000',
+    padding: 18,
+    borderRadius: 12,
     alignItems: 'center',
   },
   buttonText: {
     color: 'white',
     fontSize: 18,
+    fontWeight: '600',
   },
 });

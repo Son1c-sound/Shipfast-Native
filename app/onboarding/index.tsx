@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -11,7 +11,7 @@ export default function WelcomeScreen() {
   const router = useRouter();
 
   const handleNext = () => {
-    router.push('/onboarding/problem');
+    router.push('/onboarding/solution');
   };
 
   return (
@@ -20,9 +20,11 @@ export default function WelcomeScreen() {
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.content}>
           <View style={styles.main}>
-            <MaterialCommunityIcons name="star" size={64} color="#0A7EA4" />
             <ThemedText type="title" style={styles.title}>
-              Your App Name
+              <Image 
+                style={styles.image} 
+                src="https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png" 
+              /> 
             </ThemedText>
             <View style={styles.subtitleContainer}>
               <ThemedText style={styles.subtitle}>
@@ -31,11 +33,13 @@ export default function WelcomeScreen() {
             </View>
           </View>
 
-          <TouchableOpacity style={styles.button} onPress={handleNext}>
-            <ThemedText type="defaultSemiBold" style={styles.buttonText}>
-              Get Started
-            </ThemedText>
-          </TouchableOpacity>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.button} onPress={handleNext}>
+              <ThemedText type="defaultSemiBold" style={styles.buttonText}>
+                Get Started
+              </ThemedText>
+            </TouchableOpacity>
+          </View>
         </View>
       </SafeAreaView>
     </ThemedView>
@@ -75,14 +79,25 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 24,
   },
+  buttonContainer: {
+    marginHorizontal: -24,
+    paddingHorizontal: 24,
+    paddingTop: 16,
+    borderTopWidth: 1,
+    borderTopColor: '#E5E5E5',
+  },
   button: {
-    backgroundColor: '#0A7EA4',
-    padding: 20,
-    borderRadius: 33,
+    backgroundColor: '#000',
+    padding: 18,
+    borderRadius: 12,
     alignItems: 'center',
+  },
+  image: {
+    width: 180,
+    height: 180,
   },
   buttonText: {
     color: 'white',
     fontSize: 18,
   },
-}); 
+});
