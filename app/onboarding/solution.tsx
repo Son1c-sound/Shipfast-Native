@@ -6,6 +6,12 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+const benefitPoints = [
+  'Key benefit or feature that solves their pain',
+  'Another important advantage of your solution',
+  'A third compelling reason to use your app'
+];
+
 export default function SolutionScreen() {
   const router = useRouter();
 
@@ -21,40 +27,32 @@ export default function SolutionScreen() {
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
         >
-          <View style={styles.header}>
-            <MaterialCommunityIcons name="lightbulb-on" size={48} color="#0A7EA4" />
-            <ThemedText type="title" style={styles.title}>
-              Introducing a Better Way
-            </ThemedText>
-          </View>
-
-          <View style={styles.mainFeature}>
-            <ThemedText type="defaultSemiBold" style={styles.mainTitle}>
-              Your App's Core Value
-            </ThemedText>
-            <ThemedText style={styles.mainDescription}>
-              One clear, powerful sentence that explains exactly how you solve the user's problem.
-            </ThemedText>
-          </View>
-
-          <View style={styles.benefits}>
-            <View style={styles.benefit}>
-              <MaterialCommunityIcons name="check-circle" size={24} color="#0A7EA4" />
-              <ThemedText style={styles.benefitText}>
-                Key benefit or feature that solves their pain
+          <View style={styles.contentWrapper}>
+            <View style={styles.header}>
+              <MaterialCommunityIcons name="lightbulb-on" size={48} color="#0A7EA4" />
+              <ThemedText type="title" style={styles.title}>
+                Introducing a Better Way
               </ThemedText>
             </View>
-            <View style={styles.benefit}>
-              <MaterialCommunityIcons name="check-circle" size={24} color="#0A7EA4" />
-              <ThemedText style={styles.benefitText}>
-                Another important advantage of your solution
+
+            <View style={styles.mainFeature}>
+              <ThemedText type="defaultSemiBold" style={styles.mainTitle}>
+                Your App's Core Value
+              </ThemedText>
+              <ThemedText style={styles.mainDescription}>
+                One clear, powerful sentence that explains exactly how you solve the user's problem.
               </ThemedText>
             </View>
-            <View style={styles.benefit}>
-              <MaterialCommunityIcons name="check-circle" size={24} color="#0A7EA4" />
-              <ThemedText style={styles.benefitText}>
-                A third compelling reason to use your app
-              </ThemedText>
+
+            <View style={styles.benefits}>
+              {benefitPoints.map((benefit, index) => (
+                <View key={index} style={styles.benefit}>
+                  <MaterialCommunityIcons name="check-circle" size={24} color="#0A7EA4" />
+                  <ThemedText style={styles.benefitText}>
+                    {benefit}
+                  </ThemedText>
+                </View>
+              ))}
             </View>
           </View>
         </ScrollView>
@@ -82,9 +80,15 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
+    flexGrow: 1,
     paddingHorizontal: 24,
-    paddingTop: 24,
-    paddingBottom: 16,
+    minHeight: '100%',
+  },
+  contentWrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 24,
     gap: 24,
   },
   header: {
@@ -100,6 +104,7 @@ const styles = StyleSheet.create({
     padding: 24,
     borderRadius: 20,
     gap: 8,
+    width: '100%',
   },
   mainTitle: {
     fontSize: 22,
@@ -113,6 +118,7 @@ const styles = StyleSheet.create({
   },
   benefits: {
     gap: 12,
+    width: '100%',
   },
   benefit: {
     flexDirection: 'row',
@@ -133,12 +139,12 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#0A7EA4',
-    padding: 20,
-    borderRadius: 16,
+    padding: 16,
+    borderRadius: 33,
     alignItems: 'center',
   },
   buttonText: {
     color: 'white',
     fontSize: 18,
   },
-}); 
+});

@@ -1,40 +1,18 @@
-import { Image, StyleSheet, Platform, View } from "react-native";
+import { Image, StyleSheet, Platform, View, ScrollView } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-
-import { HelloWave } from "@/components/HelloWave";
-import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
 import { useSuperwall } from "@/hooks/useSuperwall";
 import { useOnboarding } from "@/contexts/OnboardingContext";
 import { Redirect, useRouter } from "expo-router";
 import { SUPERWALL_TRIGGERS } from "@/config/superwall";
-import { useAuth, useUser } from "@clerk/clerk-react";
-import { useEffect, useState } from "react";
+
 
 export default function HomeScreen() {
   const { setIsOnboarded } = useOnboarding();
   const { showPaywall } = useSuperwall();
-  const { isSignedIn, signOut } = useAuth();
   const router = useRouter();
-  const { user } = useUser();
-  const [email, setEmail] = useState<string>("");
 
-  const handleDeleteAccount = async () => {
-    try {
-      await user?.delete();
-      console.log("account deleted, redirecting to home");
-      router.replace("/");
-    } catch (error: any) {
-      console.error("Error deleting account:", error);
-    }
-  };
 
-  useEffect(() => {
-    if (user?.emailAddresses?.[0]?.emailAddress) {
-      setEmail(user.emailAddresses[0].emailAddress);
-    }
-  }, [user]);
 
   const handleRestartOnboarding = async () => {
     await setIsOnboarded(false);
@@ -45,110 +23,148 @@ export default function HomeScreen() {
     showPaywall(SUPERWALL_TRIGGERS.ONBOARDING);
   };
 
-  const handleShowSignIn = () => {
-    router.push("/sign-in");
-  };
-
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-    } catch (error) {
-      console.error("Error signing out:", error);
-    }
-  };
-
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
-      headerImage={
-        <Image
-          source={require("@/assets/images/partial-react-logo.png")}
-          style={styles.reactLogo}
-        />
-      }
-    >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit{" "}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText>{" "}
-          to see changes. Press{" "}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: "cmd + d",
-              android: "cmd + m",
-              web: "F12",
-            })}
-          </ThemedText>{" "}
-          to open developer tools.
+    <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
+      <View style={styles.contentContainer}>
+        <ThemedText  style={styles.mainTitle}>
+          🚀 Your Adventure Starts Here!
         </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this
-          starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{" "}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText>{" "}
-          to get a fresh <ThemedText type="defaultSemiBold">app</ThemedText>{" "}
-          directory. This will move the current{" "}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{" "}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
 
-      <View style={styles.buttonContainer}>
-        <ThemedText type="defaultSemiBold">
-          {isSignedIn ? `Signed in as: ${email} ` : ""}
-        </ThemedText>
-        {isSignedIn && (
+        <View style={styles.welcomeSection}>
+    
+          <ThemedText type="default" style={styles.sectionText}>
+            Ready to explore amazing features?
+          </ThemedText>
+        </View>
+
+        <View style={styles.statsSection}>
+          <ThemedText style={styles.statsTitle}>
+            🎯 Your Progress
+          </ThemedText>
+          <ThemedText type="default" style={styles.statsText}>
+            🌟 Level: Beginner
+          </ThemedText>
+          <ThemedText type="default" style={styles.statsText}>
+            📈 Progress: Just Starting
+          </ThemedText>
+          <ThemedText type="default" style={styles.statsText}>
+            ⭐️ Achievement: Early Explorer
+          </ThemedText>
+        </View>
+
+        <View style={styles.featuresSection}>
+          <ThemedText  style={styles.featuresTitle}>
+            ✨ Available Features
+          </ThemedText>
+          <ThemedText type="default" style={styles.featureItem}>
+            💎 Premium Content Access
+          </ThemedText>
+          <ThemedText type="default" style={styles.featureItem}>
+            🔄 Personalized Onboarding
+          </ThemedText>
+          <ThemedText type="default" style={styles.featureItem}>
+            🎨 Custom Themes
+          </ThemedText>
+        </View>
+
+        <View style={styles.tipsSection}>
+          <ThemedText  style={styles.tipsTitle}>
+            💡 Quick Tips
+          </ThemedText>
+          <ThemedText type="default" style={styles.tipText}>
+            🎉 Unlock premium for full access!
+          </ThemedText>
+          <ThemedText type="default" style={styles.tipText}>
+            🔍 Explore all features in onboarding
+          </ThemedText>
+        </View>
+
+        <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button} onPress={handleShowPaywall}>
-            <ThemedText
-              style={styles.buttonText}
-              type="defaultSemiBold"
-              onPress={handleDeleteAccount}
-            >
-              {isSignedIn ? `Delete Account` : ""}
+            <ThemedText type="defaultSemiBold" style={styles.buttonText}>
+              Show Paywall
             </ThemedText>
           </TouchableOpacity>
-        )}
-        <TouchableOpacity
-          style={[styles.signInButton, isSignedIn && styles.dangerButton]}
-          onPress={isSignedIn ? handleSignOut : handleShowSignIn}
-        >
-          <ThemedText type="defaultSemiBold" style={styles.buttonText}>
-            {isSignedIn ? "Sign Out" : "Sign In"}
-          </ThemedText>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={handleShowPaywall}>
-          <ThemedText type="defaultSemiBold" style={styles.buttonText}>
-            Show Paywall
-          </ThemedText>
-        </TouchableOpacity>
 
-        <TouchableOpacity
-          style={[styles.button, styles.secondaryButton]}
-          onPress={handleRestartOnboarding}
-        >
-          <ThemedText type="defaultSemiBold" style={styles.secondaryButtonText}>
-            Restart Onboarding
-          </ThemedText>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.button, styles.secondaryButton]}
+            onPress={handleRestartOnboarding}
+          >
+            <ThemedText type="defaultSemiBold" style={styles.secondaryButtonText}>
+              Restart Onboarding
+            </ThemedText>
+          </TouchableOpacity>
+        </View>
       </View>
-    </ParallaxScrollView>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  scrollContent: {
+    padding: 16,
+    paddingBottom: 32, 
+  },
+  contentContainer: {
+    gap: 24,
+  },
+  mainTitle: {
+    fontSize: 24,
+    marginTop: 36,
+  },
+  welcomeSection: {
+    gap: 8,
+  },
+  sectionTitle: {
+    fontSize: 24,
+  },
+  sectionText: {
+    fontSize: 16,
+    color: '#666',
+  },
+  statsSection: {
+    backgroundColor: '#f8f9fa',
+    padding: 16,
+    borderRadius: 12,
+    gap: 8,
+  },
+  statsTitle: {
+    fontSize: 20,
+    marginBottom: 8,
+  },
+  statsText: {
+    fontSize: 16,
+    color: '#444',
+  },
+  featuresSection: {
+    gap: 8,
+  },
+  featuresTitle: {
+    fontSize: 20,
+    marginBottom: 8,
+  },
+  featureItem: {
+    fontSize: 16,
+    color: '#444',
+    paddingLeft: 8,
+  },
+  tipsSection: {
+    backgroundColor: '#f0f7ff',
+    padding: 16,
+    borderRadius: 12,
+    gap: 8,
+  },
+  tipsTitle: {
+    fontSize: 20,
+    marginBottom: 8,
+  },
+  tipText: {
+    fontSize: 16,
+    color: '#444',
+  },
   titleContainer: {
     flexDirection: "row",
     alignItems: "center",

@@ -6,6 +6,12 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+const problemPoints = [
+  'Current solutions are expensive and complex',
+  'Users waste time on manual workarounds',
+  'Existing tools lack key features'
+];
+
 export default function ProblemScreen() {
   const router = useRouter();
 
@@ -21,41 +27,33 @@ export default function ProblemScreen() {
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
         >
-          <View style={styles.header}>
-            <ThemedText type="title" style={styles.title}>
-              The Problem
-            </ThemedText>
-            <ThemedText style={styles.description}>
-              Describe the main challenge or pain point your users face. Make it relatable and specific.
-            </ThemedText>
-          </View>
-
-          <View style={styles.content}>
-            <View style={styles.example}>
-              <MaterialCommunityIcons name="alert-circle" size={32} color="#0A7EA4" />
-              <ThemedText style={styles.exampleText}>
-                "I struggle with X every day, and it costs me Y hours per week..."
+          <View style={styles.contentWrapper}>
+            <View style={styles.header}>
+              <ThemedText type="title" style={styles.title}>
+                The Problem
+              </ThemedText>
+              <ThemedText style={styles.description}>
+                Describe the main challenge or pain point your users face. Make it relatable and specific.
               </ThemedText>
             </View>
 
-            <View style={styles.points}>
-              <View style={styles.point}>
-                <MaterialCommunityIcons name="close" size={24} color="#E11D48" />
-                <ThemedText style={styles.pointText}>
-                  Current solutions are expensive and complex
+            <View style={styles.content}>
+              <View style={styles.example}>
+                <MaterialCommunityIcons name="alert-circle" size={32} color="#0A7EA4" />
+                <ThemedText style={styles.exampleText}>
+                  "I struggle with X every day, and it costs me Y hours per week..."
                 </ThemedText>
               </View>
-              <View style={styles.point}>
-                <MaterialCommunityIcons name="close" size={24} color="#E11D48" />
-                <ThemedText style={styles.pointText}>
-                  Users waste time on manual workarounds
-                </ThemedText>
-              </View>
-              <View style={styles.point}>
-                <MaterialCommunityIcons name="close" size={24} color="#E11D48" />
-                <ThemedText style={styles.pointText}>
-                  Existing tools lack key features
-                </ThemedText>
+
+              <View style={styles.points}>
+                {problemPoints.map((point, index) => (
+                  <View key={index} style={styles.point}>
+                    <MaterialCommunityIcons name="close" size={24} color="#E11D48" />
+                    <ThemedText style={styles.pointText}>
+                      {point}
+                    </ThemedText>
+                  </View>
+                ))}
               </View>
             </View>
           </View>
@@ -86,14 +84,19 @@ const styles = StyleSheet.create({
   scrollContent: {
     flexGrow: 1,
     paddingHorizontal: 24,
-    paddingTop: 24,
+  },
+  contentWrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingVertical: 24,
   },
   header: {
     gap: 8,
     marginBottom: 32,
   },
   title: {
-    fontSize: 36,
+    fontSize: 33,
+    textAlign: 'center',
   },
   description: {
     fontSize: 16,
@@ -140,11 +143,11 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: '#0A7EA4',
     padding: 16,
-    borderRadius: 16,
+    borderRadius: 33,
     alignItems: 'center',
   },
   buttonText: {
     color: 'white',
     fontSize: 17,
   },
-}); 
+});

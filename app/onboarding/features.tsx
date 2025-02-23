@@ -7,6 +7,40 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import type { MaterialCommunityIcons as IconType } from '@expo/vector-icons';
 
+const featuresList = [
+  {
+    icon: 'cart-variant',
+    title: 'In-App Purchases',
+    description: 'Superwall integration for subscriptions and one-time purchases'
+  },
+  {
+    icon: 'lock',
+    title: 'Clerk Authentication',
+    description: 'Clerk Oauth system for google and apple'
+  },
+  {
+    icon: 'glasses',
+    title: 'Customized Navigations',
+    description: 'Customized Navbar and bottom tabs'
+  },
+  {
+    icon: 'book',
+    title: 'Customized Profile',
+    description: 'Person Profile with sign out and delete account implemented'
+  },
+  {
+    icon: 'navigation',
+    title: 'Modern Navigation',
+    description: 'File-based routing with Expo Router for a great UX'
+  },
+  {
+    icon: 'theme-light-dark',
+    title: 'Theming System',
+    description: 'Beautiful dark and light mode support out of the box'
+  },
+
+] as const;
+
 export default function FeaturesScreen() {
   const router = useRouter();
 
@@ -22,29 +56,24 @@ export default function FeaturesScreen() {
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
         >
-          <View style={styles.header}>
-            <MaterialCommunityIcons name="check-decagram" size={48} color="#0A7EA4" />
-            <ThemedText type="title" style={styles.title}>
-              Ready to Use
-            </ThemedText>
-          </View>
+          <View style={styles.contentWrapper}>
+            <View style={styles.header}>
+              <MaterialCommunityIcons name="check-decagram" size={48} color="#0A7EA4" />
+              <ThemedText type="title" style={styles.title}>
+                Ready to Use
+              </ThemedText>
+            </View>
 
-          <View style={styles.features}>
-            <Feature
-              icon="cart-variant"
-              title="In-App Purchases"
-              description="Superwall integration for subscriptions and one-time purchases"
-            />
-            <Feature
-              icon="navigation"
-              title="Modern Navigation"
-              description="File-based routing with Expo Router for a great UX"
-            />
-            <Feature
-              icon="theme-light-dark"
-              title="Theming System"
-              description="Beautiful dark and light mode support out of the box"
-            />
+            <View style={styles.features}>
+              {featuresList.map((feature, index) => (
+                <Feature
+                  key={index}
+                  icon={feature.icon}
+                  title={feature.title}
+                  description={feature.description}
+                />
+              ))}
+            </View>
           </View>
         </ScrollView>
 
@@ -93,10 +122,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
+    flexGrow: 1,
     paddingHorizontal: 24,
-    paddingTop: 24,
-    paddingBottom: 16,
+    minHeight: '100%',
+  },
+  contentWrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 24,
     gap: 24,
+    width: '100%',
   },
   header: {
     alignItems: 'center',
@@ -108,11 +144,13 @@ const styles = StyleSheet.create({
   },
   features: {
     gap: 16,
+    width: '100%',
   },
   feature: {
     backgroundColor: '#0A7EA410',
     padding: 16,
     borderRadius: 12,
+    width: '100%',
   },
   featureHeader: {
     flexDirection: 'row',
@@ -145,12 +183,12 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#0A7EA4',
-    padding: 20,
-    borderRadius: 16,
+    padding: 16,
+    borderRadius: 33,
     alignItems: 'center',
   },
   buttonText: {
     color: 'white',
     fontSize: 18,
   },
-}); 
+});
