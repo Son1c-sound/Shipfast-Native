@@ -1,8 +1,8 @@
-# Welcome to jack's Expo React Native free boilerplate 👋
+# Welcome to ShipFast Native 🚀
 
-This is an [Expo](https://expo.dev) template project with Superwall libraries ready to use and a simple onboarding sequence for first time users.
+This is an [Expo](https://expo.dev) template project with Clerk Authentication & superwall libraries ready to use and a simple onboarding sequence for first time users.
 
-This free boilerplate is sponsored by [post bridge](https://post-bridge.com) - a super simple and affordable social media scheduling tool for small teams and founders.
+This free boilerplate is sponsored by [Whisperin]([https://post-bridge.com](https://apps.apple.com/us/app/whisperin-speech-to-post/id6741297358)) - a text to post optimizer mobile application.
 
 ## Get started
 
@@ -22,9 +22,11 @@ Or
 3. Start the app
 
    ```bash
-    npx expo start
+   android: npx expo run android
+
+   ios: npx expo run ios
    ```
--- you will need to make a development build or run in development mode as Superwall does not work in Expo GO
+-- you will need to make a development build or run in development mode as Superwall does not work in Expo 
 
 In the output, you'll find options to open the app in a
 
@@ -33,11 +35,10 @@ In the output, you'll find options to open the app in a
 - [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
 ## Need help?
 
-Join [the discord](https://discord.gg/XuT2V5GUkA) for app founders and @jackfriks for help.
+Contact: https://x.com/zura_on_
 
 ## Learn more
 
