@@ -2,7 +2,7 @@
 
 This is an [Expo](https://expo.dev) template project with Clerk Authentication & superwall libraries ready to use and a simple onboarding sequence for first time users.
 
-This free boilerplate is sponsored by [Whisperin]([https://post-bridge.com](https://apps.apple.com/us/app/whisperin-speech-to-post/id6741297358)) - a text to post optimizer mobile application.
+This free boilerplate is sponsored by [Whisperin](https://apps.apple.com/us/app/whisperin-speech-to-post/id6741297358) - a text to post optimizer mobile application.
 
 ## Get started
 
