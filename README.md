@@ -4,6 +4,13 @@ This is an [Expo](https://expo.dev) template project with Clerk Authentication &
 
 This free boilerplate is sponsored by [Whisperin](https://apps.apple.com/us/app/whisperin-speech-to-post/id6741297358) - a text to post optimizer mobile application.
 
+##feats 
+
+✅ Onboarding
+✅ Authentication
+✅ Paywalls 
+✅ Custom bottom and top navigation
+
 ## Get started
 
 1. Clone this repository 
