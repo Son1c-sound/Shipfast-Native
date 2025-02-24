@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import { router } from "expo-router";
 import { useAuth, useUser } from "@clerk/clerk-react";
-import { PaywallButton } from "./PaywallButton";
 import { presentPaywall } from "@/hooks/useRevenuecat";
 import { useOnboarding } from "@/contexts/OnboardingContext";
 

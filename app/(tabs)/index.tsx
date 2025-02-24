@@ -1,8 +1,9 @@
 import { StyleSheet, View, SafeAreaView, } from "react-native";
-import { PaywallButton } from "@/components/PaywallButton";
 import { usePostHog } from 'posthog-react-native';
 import { useUser } from '@clerk/clerk-expo';
 import { useEffect } from 'react';
+import ProfileScreen from "@/components";
+
 
 export default function HomeScreen() {
   const posthog = usePostHog()
@@ -21,10 +22,10 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        <PaywallButton />
+        <ProfileScreen />
       </View>
     </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
