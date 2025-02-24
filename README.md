@@ -6,10 +6,10 @@ This free boilerplate is sponsored by [Whisperin](https://apps.apple.com/us/app/
 
 ##feats 
 
-✅ Onboarding
-✅ Authentication
-✅ Paywalls 
-✅ Custom bottom and top navigation
+-✅ Onboarding
+-✅ Authentication
+-✅ Paywalls 
+-✅ Custom bottom and top navigation
 
 ## Get started
 
