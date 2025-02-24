@@ -72,6 +72,7 @@ const OAuthButtons = () => {
 const styles = StyleSheet.create({
   container: {
     gap: 12,
+    width: '100%', 
   },
   button: {
     backgroundColor: 'white',
@@ -79,15 +80,18 @@ const styles = StyleSheet.create({
     padding: 12,
     borderWidth: 1,
     borderColor: '#dadce0',
-    alignSelf: 'stretch'
+    width: '100%', 
+    minHeight: 48,
   },
   appleButton: {
     backgroundColor: 'black',
+    borderColor: 'black',
   },
   buttonContent: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    minHeight: 24, 
   },
   logo: {
     width: 20,
@@ -96,7 +100,6 @@ const styles = StyleSheet.create({
   },
   appleLogo: {
     tintColor: 'white',
-  
   },
   buttonText: {
     color: '#3c4043',

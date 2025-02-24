@@ -8,7 +8,6 @@ import 'react-native-reanimated';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { superwallService } from '@/services/superwall';
-import { useColorScheme } from '@/hooks/useColorScheme';
 import { OnboardingProvider } from '@/contexts/OnboardingContext';
 
 import { ClerkProvider, ClerkLoaded } from '@clerk/clerk-expo'
@@ -47,6 +46,7 @@ export default function RootLayout() {
     <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#F5F5F5' }} >
       <OnboardingProvider>
           <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="(navbar)" />
             <Stack.Screen name="(tabs)" />
             <Stack.Screen name="onboarding" />
             <Stack.Screen name="(auth)" options={{ headerShown: false }} />

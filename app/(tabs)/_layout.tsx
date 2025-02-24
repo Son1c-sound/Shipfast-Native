@@ -1,10 +1,12 @@
 import { Tabs } from 'expo-router';
 import { Platform, Pressable, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
+import Navbar from '@/components/Navbar';
 
 export default function TabLayout() {
   return (
+    <>
+    <Navbar />
     <Tabs
       screenOptions={{
         headerShown: false,
@@ -17,16 +19,8 @@ export default function TabLayout() {
           paddingBottom: Platform.OS === 'ios' ? 28 : 8,
           paddingTop: 8,
           backgroundColor: '#ffffff',
-          borderTopWidth: 1,
-          borderTopColor: 'rgba(0, 0, 0, 0.1)',
-          shadowColor: '#000',
-          shadowOffset: {
-            width: 0,
-            height: -2,
-          },
-          shadowOpacity: 0.1,
-          shadowRadius: 8,
-          elevation: 8,
+          borderTopWidth: 0.3,
+          borderTopColor: 'ffffff',
         },
         tabBarActiveTintColor: '#007AFF',
         tabBarInactiveTintColor: '#8E8E93',
@@ -41,16 +35,24 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons style={icon.style}  name="home" color={color} focused={focused} />
+            <Ionicons 
+              style={icon.style} 
+              name={focused ? 'home' : 'home-outline'} 
+              color={color} 
+            />
           ),
         }}
       />
       <Tabs.Screen
-        name="messages"
+        name="discover"
         options={{
-          title: 'Messages',
+          title: 'Discover',
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons style={icon.style} name="chatbubbles" color={color} focused={focused} />
+            <Ionicons 
+              style={icon.style} 
+              name={focused ? 'compass' : 'compass-outline'} 
+              color={color} 
+            />
           ),
         }}
       />
@@ -59,16 +61,21 @@ export default function TabLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons style={icon.style} name="person" color={color} focused={focused} />
+            <Ionicons 
+              style={icon.style} 
+              name={focused ? 'person' : 'person-outline'} 
+              color={color} 
+            />
           ),
         }}
       />
     </Tabs>
+    </>
   );
 }
 
 const icon = StyleSheet.create({
   style: {
-    fontSize: 22,
+    fontSize: 23,
   },
 });
