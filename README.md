@@ -1,58 +1,84 @@
-# Note
-I will be updating docs soon
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="https://github.com/user-attachments/assets/e6100891-b08b-4bcc-919b-da920e5902d7" alt="Logo" width="80" height="80">
+  </a>
 
-# Welcome to ShipFast Native 🚀
+  <h3 align="center">SHIPFAST NATIVE ⚡</h3>
 
-This is an [Expo](https://expo.dev) template project with Clerk Authentication & superwall libraries ready to use and a simple onboarding sequence for first time users.
+  <p align="center">
+    AWESOME EXPO template to kickstart app developement
+    <br />
+</div>
 
-This free boilerplate is sponsored by [Whisperin](https://apps.apple.com/us/app/whisperin-speech-to-post/id6741297358) - a text to post optimizer mobile application.
+<h1>What Boilerplate Includes</h1>
+✅Onboarding 
+<br />
+✅Authentication (clerk oauth)
+<br />
+✅Analytics (posthog)
+<br />
+✅Subscription management & Paywalls (Revenuecat)
 
-##feats 
+## Getting Started
 
--✅ Onboarding
--✅ Authentication
--✅ Paywalls 
--✅ Custom bottom and top navigation
+To use project you should run production build: npm run ios or npm run android.
+<br/>
+Boilerplate is tested on both Apple and Android enviroments. for support contact me.
 
-## Get started
+### Installation
 
-1. Clone this repository 
-
-2. Install dependencies
-
-   ```bash
+1. Clone the repo
+   ```sh
+   git clone [https://github.com/github_username/repo_name.git](https://github.com/Son1c-sound/Shipfast-Native)
+   ```
+2. Install NPM packages
+   ```sh
    npm install
    ```
-Or 
+3. Enter your API s, fill out enviromental variables.
 
-  ```bash
-   npx expo install
+   Before starting make sure!
+   
+   You have acquired clerk api key with google and apple oauth enabled, and bot protection DISABLED, for expo apps bot protection does not work. you can find this in clerk documentation aswell.
+   <br/>
+   You have completed setting up revenuecat and having configured paywall with entiltments set up. you will need entiltment ID for paywalls and subscription management.
+   
+   ```js
+   Auth:
+   EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY
+
+   Analytics:
+   EXPO_PUBLIC_POSTHOG_API_KEY=''
+   EXPO_PUBLIC_POSTHOG_HOST=
+
+   Paywalls and Subscription management:
+   EXPO_PUBLIC_REVENUECAT_ENTITLEMENT_ID='free-trial-expo'
+   EXPO_PUBLIC_REVENUECAT_GOOGLE_API_KEY=''
+   EXPO_PUBLIC_REVENUECAT_APPLE_API_KEY=''
+   
+   ```
+5. Change git remote url to avoid accidental pushes to base project
+   ```sh
+   git remote set-url origin github_username/repo_name
+   git remote -v # confirm the changes
    ```
 
-3. Start the app
-
-   ```bash
-   android: npx expo run android
-
-   ios: npx expo run ios
-   ```
--- you will need to make a development build or run in development mode as Superwall does not work in Expo 
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-## Need help?
+<!-- CONTRIBUTING -->
+## Contributing
 
-Contact: https://x.com/zura_on_
+Any contributions you make are **greatly appreciated**.
 
-## Learn more
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
 
-To learn more about developing your project with Expo, look at the following resources:
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
