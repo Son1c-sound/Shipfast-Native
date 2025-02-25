@@ -48,13 +48,18 @@ export const presentPaywallIfNeeded = async (): Promise<boolean> => {
       return false;
     }
 
+    const entiltmentID = process.env.EXPO_PUBLIC_REVENUECAT_ENTITLEMENT_ID
+    if (!entiltmentID) {
+      console.error('EXPO_PUBLIC_REVENUECAT_ENTITLEMENT_ID not set');
+      return false;
+    }
     const paywallResult: PAYWALL_RESULT = await RevenueCatUI.presentPaywallIfNeeded({
-      requiredEntitlementIdentifier: "Offering-id: ex. free-trial-expo"
+      requiredEntitlementIdentifier: entiltmentID
     });
     
     return paywallResult === PAYWALL_RESULT.PURCHASED || paywallResult === PAYWALL_RESULT.RESTORED;
   } catch (e) {
-    console.error('Error in presentPaywallIfNeeded:', e);
-    return false;
+    console.error('Error in presentPaywallIfNeeded:', e)
+    return false
   }
 };

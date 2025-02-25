@@ -3,15 +3,18 @@ import { Platform } from 'react-native';
 
 export const initializeRevenueCat = async (userId?: string | null, email?: string | null) => {
   try {
-    Purchases.setLogLevel(LOG_LEVEL.VERBOSE);
-    
+    Purchases.setLogLevel(LOG_LEVEL.VERBOSE)
+
+    const revenuecatGoogleApi = process.env.EXPO_PUBLIC_REVENUECAT_GOOGLE_API_KEY || '';
+    const revenueAppleApi = process.env.EXPO_PUBLIC_REVENUECAT_APPLE_API_KEY || '';
+
     if (Platform.OS === 'ios') {
       await Purchases.configure({
-        apiKey: 'REVENUECAT_IOS_KEY'
+        apiKey: revenueAppleApi,
       });
     } else if (Platform.OS === 'android') {
       await Purchases.configure({
-        apiKey: 'REVENUECAT_ANDROID_KEY'
+        apiKey: revenuecatGoogleApi,
       });
     }
     
