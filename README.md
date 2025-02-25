@@ -1,3 +1,6 @@
+# Note
+I will be updating docs soon
+
 # Welcome to ShipFast Native 🚀
 
 This is an [Expo](https://expo.dev) template project with Clerk Authentication & superwall libraries ready to use and a simple onboarding sequence for first time users.
